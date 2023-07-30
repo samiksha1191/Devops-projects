@@ -1,0 +1,16 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: your-service-monitor  # Replace with a meaningful name
+  labels:
+    app: timestamp-service  # Replace with your application's label
+    release: prometheus
+spec:
+  jobLabel: job
+  endpoints:
+    - interval: 30s
+      port: web
+      path: /
+  selector:
+    matchLabels:
+      app: timestamp-service  # Replace with your application's label

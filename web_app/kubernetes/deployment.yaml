@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: timestamp-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: timestamp-service
+  template:
+    metadata:
+      labels:
+        app: timestamp-service
+    spec:
+      containers:
+        - name: timestamp-service
+          image: samiksha34/centos:firstimage
+          ports:
+            - containerPort: 8000
