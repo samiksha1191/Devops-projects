@@ -35,17 +35,16 @@ kubectl port-forward service/timestamp-service 8080:80
 * To enable the ingress service we need to configure ingress controller. 
 * I have configured nginx ingress controller in our usecase
 * To make this service accessible by everyone we need to map the kubernetes api server ip/loadbalancer ip to a DNS name in a valid DNS registra which i have not used yet in our case. In our case I created a DNS in /etc/hosts file locally and passed the DNS name in host field in ingress.yaml
+* we can access the web service over the internet using DNSname:Nodeport
 
 ```
 kubectl apply -f ingress.yaml
 ```
 
-* we can access the web service over the internet using DNSname:Nodeport
-
-
 > 4. Monitoring the application using Promeatheus in Kubernetes.
 
 * To monitor the service in kubernetes, I configured Prometheus operator using helm. and configured service monitor so prometheus can scrap the metrics from it and pass to grafana.
 
-
-<kubectl apply -f service-monitor.yaml>
+```
+kubectl apply -f service-monitor.yaml
+```
